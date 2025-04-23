@@ -12,7 +12,7 @@ A React-based contacts management application built with TypeScript and Vite.
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/nimnaherath/react-contact-app
 cd contacts
 ```
 
