@@ -1,54 +1,92 @@
-# React + TypeScript + Vite
+# Contacts Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based contacts management application built with TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Installation Guide
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-## Expanding the ESLint configuration
+### Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd contacts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Project Structure
+
+```
+contacts/
+├── eslint.config.js       # ESLint configuration
+├── index.html             # Root HTML file
+├── package.json           # Project dependencies and scripts
+├── tsconfig.json          # TypeScript configuration
+├── vite.config.ts         # Vite configuration
+├── public/                # Public assets
+│   └── vite.svg
+└── src/                   # Source code
+    ├── App.tsx            # Main application component
+    ├── main.tsx           # Application entry point
+    ├── assets/            # Static assets
+    ├── components/        # Reusable UI components
+    │   └── ContactCard.tsx
+    ├── domain/            # Domain logic (Clean Architecture)
+    │   └── contacts/
+    │       ├── collections/      # Data collections
+    │       │   └── ContactCollection.ts
+    │       ├── contracts/        # Interface definitions
+    │       │   └── ContactRepositoryContract.ts
+    │       ├── interactors/      # Use cases
+    │       │   ├── CreateContactIntercator.ts
+    │       │   ├── GetAllContactIntercator.ts
+    │       │   └── requests/
+    │       │       └── ContactRequest.ts
+    │       ├── models/           # Domain models
+    │       │   └── contact.ts
+    │       └── repositories/     # Data access
+    │           └── ContactRepository.ts
+    └── pages/             # Application pages/views
+        ├── CreateContact.tsx
+        └── ListContacts.tsx
+```
+
+## Architecture
+
+This project follows Clean Architecture principles, separating the codebase into:
+
+- **Domain Layer**: Contains business logic, entities, use cases (interactors)
+- **Data Layer**: Repositories for data access
+- **Presentation Layer**: React components, pages, and UI logic
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build locally
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- Clean Architecture
