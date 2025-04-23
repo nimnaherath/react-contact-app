@@ -6,6 +6,10 @@ class ContactCollection {
   constructor(contacts: Contact[]) {
     this.contacts = contacts;
   }
+
+  public all(): Contact[] {
+    return this.contacts;
+  }
 }
 
 export default ContactCollection;

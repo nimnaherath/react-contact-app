@@ -5,7 +5,8 @@ const ContactRequestSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
   phone: z
     .string()
-    .regex(/^\+?[0-9]*$/, { message: "Invalid phone number" }),
+    .length(10, { message: "Phone number must be 10 digits" })  
+    .regex(/^\d+$/, { message: "Phone number must contain only digits" }),
 });
 
 type ContactRequest = z.infer<typeof ContactRequestSchema>;

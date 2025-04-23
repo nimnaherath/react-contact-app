@@ -1,13 +1,17 @@
+import { Link } from 'react-router'
 import './App.css'
+import { ReactNode } from 'react'
 
-function App() {
+type AppProps = {
+  children: ReactNode
+}
+
+function App({ children }: AppProps) {
 
   return (
-   <div>
-    <h1>
-      hello world
-    </h1>
-   </div>
+    <div>
+      {children}
+    </div>
   )
 }
 
